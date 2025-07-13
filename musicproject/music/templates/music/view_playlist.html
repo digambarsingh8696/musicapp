@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ playlist.name }} Playlist</title>
+    <link rel="stylesheet" href="{% static 'view_playlist.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body>
+    <div class="all-container">
+        <div class="head-name">
+            <a href="{% url 'my_playlists' %}" class="icon-back-button" title="Back">
+                <i class="fas fa-arrow-left"></i>
+            </a>
+            <h2>{{ playlist.name }}</h2>
+        </div>
+        <div class="card-container">
+        {% for song in playlist.songs.all %}
+        <div class="card-p">
+            <div class="card">
+                <img src="{{ song.image }}" alt="{{ song.title }}" />
+            </div>
+            <div class="card-out">
+                <p>{{ song.title }}</p>
+                <p>
+                    {{ song.artist }}
+                </p>
+                <audio controls style="width: 90%; height: 50px;">
+                    <source src="{{ song.audio_url }}" type="audio/mpeg">
+                </audio>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    </div>
+    <footer class="bottom-footer">
+    <a href="{% url 'home' %}">
+        <i class="fa fa-home"></i>
+        <span>Home</span>
+    </a>
+    <a href="#">
+        <i class="fa fa-music"></i>
+        <span>Hellotunes</span>
+    </a>
+    <a href="{% url 'my_playlists' %}">
+        <i class="fa fa-list"></i>
+        <span>Playlist</span>
+    </a>
+    <a href="#">
+        <i class="fa fa-cog"></i>
+        <span>Settings</span>
+    </a>
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    
+}
+body{
+    background-color: #151313;
+    margin: 0;
+    padding: 0;
+}
+.navbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 20px;
+    background-color: #151313;
+    color: white;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+}
+
+.music-icon {
+    background-color: #007BFF;
+    color: white;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.search-box {
+    flex-grow: 1;
+    padding-top: 3px;
+    margin: 10px 20px;
+    max-width: 350px;
+}
+
+.search-box form{
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+}
+.search-box input {
+    height: 30px;
+    width: 100%;
+    padding: 6px 10px;
+    border-radius: 4px;
+    border: none;
+}
+ .search-box button{
+    height: 30px;
+    background-color: white;
+    color: rgb(71, 220, 71);
+    border: none;
+    border-radius: 2px;
+ }
+
+.icons {
+    display: flex;
+    align-items: center;
+}
+
+.icons i {
+    margin-left: 20px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.icons i:hover {
+    color: #ccc;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .logo {
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+
+    .search-box {
+        margin: 10px 0;
+    }
+
+    .icons {
+        justify-content: center;
+        margin-top: 10px;
+    }
+}

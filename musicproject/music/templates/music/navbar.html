@@ -1,0 +1,49 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'navbar.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+<div class="navbar">
+    <div class="logo">
+        <span class="music-icon">
+            <i class="fas fa-music"></i>
+        </span>
+        MusicApp
+    </div>
+
+    <div class="search-box">
+        <form method="GET" action="{% url 'home' %}">
+            <input type="text" name="query" placeholder="Search songs..." required>
+            <datalist id="suggestions"></datalist>
+            <button type="submit" style="padding: 8px;">Search</button>
+        </form>
+    </div>
+
+    <div class="icons">
+        <i class="fas fa-cog" title="Settings"></i>
+        {% if show_create_playlist %}
+        <i class="fas fa-plus" title="Create Playlist" onclick="location.href='{% url 'create_playlist' %}'"></i>
+        {% elif show_logout %}
+        <i class="fas fa-sign-out-alt" title="Logout" onclick="location.href='{% url 'login' %}'"></i>
+        {% endif %}
+    </div>
+</div>
+<script>
+document.getElementById('searchInput').addEventListener('input', function () {
+    let query = this.value;
+    if (query.length < 2) return;
+
+    fetch(`https://saavn.dev/api/search/songs?query=${query}`)
+        .then(response => response.json())
+        .then(data => {
+            const results = data.data?.results || [];
+            let suggestionBox = document.getElementById('suggestions');
+            suggestionBox.innerHTML = '';
+            results.slice(0, 5).forEach(song => {
+                let option = document.createElement('option');
+                option.value = song.name;
+                suggestionBox.appendChild(option);
+            });
+        });
+});
+</script>

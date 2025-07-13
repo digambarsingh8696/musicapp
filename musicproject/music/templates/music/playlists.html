@@ -1,0 +1,52 @@
+{% include 'music/navbar.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Playlists</title>
+    <link rel="stylesheet" href="{% static 'playlist.css' %}">
+</head>
+<body>
+
+    <h2 style="color: white; margin-top: 20px; font-family: Arial, Helvetica, sans-serif;">Your Playlists</h2>
+    <div class="playlist-grid">
+        <a href="{% url 'create_playlist' %}" style="text-decoration: none;">
+            <div class="card add-card">
+                <div class="plus-icon">+</div>
+                <p>Add Playlist</p>
+            </div>
+        </a>
+        {% for p in playlists %}
+        <a href="{% url 'view_playlist' p.id %}" style="text-decoration: none;">
+            <div class="playlist-card">
+                <div class="playlist-icon">
+                    {{ p.name|first|upper }}
+                </div>
+                <p class="playlist-name">{{ p.name }}</p>
+            </div>
+        </a>
+        {% empty %}
+        <p>No playlists found.</p>
+        {% endfor %}
+    </div>
+    <footer class="bottom-footer">
+    <a href="{% url 'home' %}">
+        <i class="fa fa-home"></i>
+        <span>Home</span>
+    </a>
+    <a href="#">
+        <i class="fa fa-music"></i>
+        <span>Hellotunes</span>
+    </a>
+    <a href="{% url 'my_playlists' %}">
+        <i class="fa fa-list"></i>
+        <span>Playlist</span>
+    </a>
+    <a href="#">
+        <i class="fa fa-cog"></i>
+        <span>Settings</span>
+    </a>
+</footer>
+</body>
+</html>

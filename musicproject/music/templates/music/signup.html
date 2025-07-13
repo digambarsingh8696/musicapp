@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Account</title>
+    <link rel="stylesheet" href="{% static 'signup.css' %}">
+</head>
+<body>
+    <div class="signup-container">
+        <div class="signup-box">
+            <h2>Create your account</h2>
+            <form method="POST">
+                {% csrf_token %}
+                <input type="text" name="username" placeholder="Userame" autocomplete="off" value="{{ form.username.value|default_if_none:'' }}">
+                {% if form.username.errors %}
+                    <p class="error">{{ form.username.errors.0 }}</p>
+                {% endif %}
+                <input type="email" name="email" placeholder="Email" autocomplete="off" value="{{ form.email.value|default_if_none:'' }}">
+                <input type="text" name="phone" placeholder="Contact" autocomplete="off" value="{{ form.phone.value|default_if_none:'' }}">
+                {% comment %} {{ form.phone }}<br> {% endcomment %}
+                <select name="gender" required value="{{ form.gender.value|default_if_none:'' }}">
+                    <option value="">Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+                {% comment %} <label>Gender:</label>
+                {{ form.gender }}<br> {% endcomment %}
+                <input type="number" name="age" min="1" placeholder="Age" autocomplete="off" value="{{ form.age.value|default_if_none:'' }}">
+                {% if form.age.errors %}
+                <p class="error">{{ form.age.errors.0 }}</p>
+                {% endif %}
+                {% comment %} {{ form.age }}<br> {% endcomment %}
+                <input type="password" name="password" placeholder="Password" autocomplete="new-password">
+                 <button type="submit" class="register-btn">Sign Up</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
