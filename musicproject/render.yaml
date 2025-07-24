@@ -2,8 +2,12 @@ services:
   - type: web
     name: music-app
     env: python
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "gunicorn musicproject.wsgi"
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn musicproject.wsgi
     envVars:
-      - key: PYTHONPATH
-        value: /opt/render/project/src
+      - key: DJANGO_SETTINGS_MODULE
+        value: musicproject.settings
+    buildFilter:
+      paths:
+        - musicproject/**
+        - manage.py
