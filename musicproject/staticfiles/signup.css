@@ -1,0 +1,80 @@
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+}
+
+.signup-box {
+    background-color: #111;
+    padding: 30px 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+.signup-box h2 {
+    margin-bottom: 10px;
+    font-size: 26px;
+}
+.signup-box input[type="text"],
+.signup-box input[type="email"],
+.signup-box input[type="number"],
+.signup-box input[type="password"] {
+    width: 87%;
+    padding: 12px;
+    margin: 10px 0;
+    background: none;
+    border: 2px solid #00f0ff;
+    border-radius: 30px;
+    color: #fff;
+    text-align: center;
+    font-size: 18px;
+    outline: none;
+    height: 60px;
+}
+
+.signup-box select{
+    width: 87%;
+    padding: 12px;
+    margin: 10px 0;
+    background: none;
+    border: 2px solid #00f0ff;
+    border-radius: 30px;
+    color: #fff;
+    text-align: center;
+    font-size: 18px;
+    outline: none;
+    height: 60px;
+}
+
+.signup-box select option{
+    width: 50%;
+    padding: 12px;
+    margin: 10px 0;
+    background: black;
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+}
+
+.register-btn {
+    width: 87%;
+    padding: 12px;
+    background-color: transparent;
+    color: #00ff88;
+    border: 2px solid #00ff88;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 17px;
+    margin-top: 10px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.register-btn:hover {
+    background-color: #00ff88;
+    color: black;
+}
