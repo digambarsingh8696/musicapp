@@ -1,0 +1,109 @@
+.all-container{
+    margin-top: 10px;
+    padding-bottom: 80px;
+}
+
+/* .head-name{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.head-chlid{
+    display: flex;
+    flex-direction: column;
+} */
+.icon-back-button {
+  display: inline-block;
+  padding-left: 10px;
+  margin-top: 0;
+  color: white;
+  text-decoration: none;
+  font-size: 30px;
+  margin-bottom: 16px;
+}
+
+.icon-back-button:hover {
+   color: rgb(12, 135, 12);
+}
+
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 17px;
+    padding: 16px;
+}
+
+.card-p{
+    width: 290px; /* or 270px */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card {
+    min-width: 270px;
+    height: 260px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* 🔄 Prevents card from shrinking; keeps scrollable layout */
+    flex-shrink: 0;
+}
+
+.card img{
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+    display: block;
+}
+
+.card-out{
+    text-align: start;
+    margin-top: 6px;
+    font-size: 16px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: white;
+}
+
+h2 {
+    margin-bottom: 10px;
+    margin-left: 10px;
+    font-size: 26px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+.bottom-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #111;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 60px;
+    border-top: 1px solid #333;
+    z-index: 999;
+}
+
+.bottom-footer a {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 12px;
+}
+
+.bottom-footer i {
+    font-size: 20px;
+    margin-bottom: 2px;
+}
+
+.bottom-footer span{
+    font-size: 17px;
+    font-family: Arial, Helvetica, sans-serif;
+}

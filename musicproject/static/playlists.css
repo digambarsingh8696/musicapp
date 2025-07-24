@@ -1,0 +1,109 @@
+.card {
+  width: 170px;
+  height: 180px;
+  border-radius: 16px;
+  background-color: #1f1f1f;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.card:hover {
+  background-color: #333;
+}
+
+.plus-icon {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+.card p{
+    font-size: 20px;
+}
+.playlist-grid {
+    display: flex;
+    flex-wrap: wrap;         /* Allow items to wrap to next row */
+    gap: 20px;               /* Space between cards */
+    margin-top: 20px;
+    justify-content: flex-start;
+}
+
+.playlist-card-link {
+    text-decoration: none;
+}
+
+.playlist-card {
+    background: #1e1e1e;
+    border-radius: 12px;
+    padding: 20px;
+    width: 170px;
+    height: 180px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 0 10px #00000033;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
+
+.playlist-card:hover {
+    transform: scale(1.05);
+}
+
+.playlist-icon {
+    background: #3498db;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 28px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px auto;
+}
+
+.playlist-name {
+    margin-top: 55px;
+    font-size: 18px;
+    text-transform: capitalize;
+}
+
+.bottom-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #111;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 60px;
+    border-top: 1px solid #333;
+    z-index: 999;
+}
+
+.bottom-footer a {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 12px;
+}
+
+.bottom-footer i {
+    font-size: 20px;
+    margin-bottom: 2px;
+}
+
+.bottom-footer span{
+    font-size: 17px;
+    font-family: Arial, Helvetica, sans-serif;
+}

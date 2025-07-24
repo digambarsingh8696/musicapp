@@ -1,0 +1,373 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block title %}
+Mymusic
+{% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'home.css' %}">
+{% endblock %}
+{% block content %}
+<div class="all-container">
+        {% if search_query %}
+        <h2>Search results for "{{ search_query }}"</h2>
+        <div class="card-container overflow-x-auto">
+            {% for track in search_results %}
+            <div class="card-p">
+                <div class="card">
+                    <img src="{{ track.image.2.url }}" alt="{{ track.name }}">
+                </div>
+                <div class="card-out">
+                    <p>{{ track.name }}</p>
+                    <p>{{ track.artists.primary.0.name }}</p>
+                    <div style="display: flex; align-items: center;">
+                        <audio controls style="width: 90%; height: 50px;">
+                            <source src="{{ track.downloadUrl.4.url }}" type="audio/mpeg">
+                        </audio>
+
+                        <button onclick="showPlaylistModal(
+                            '{{ track.name }}',
+                            '{{ track.artists.primary.0.name|default:"Unknown Artist" }}',
+                            '{{ track.image.2.url }}',
+                            '{{ track.downloadUrl.4.url }}'
+                            )" style="margin-left: 10px; border: none; color: white; background: none; font-size: 30px; padding: 6px 10px; border-radius: 4px; cursor: pointer;">
+                            +
+                        </button>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+                <p>No songs found.</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+        <div class="card-container">
+            {% for track in hindi_tracks %}
+            <div class="card-p">
+                <div class="card">
+                    <img src="{{ track.image.2.url }}" alt="{{ track.title }}" />
+                </div>
+                <div class="card-out">
+                    <p>{{ track.name }}</p>
+                    <p>{% if track.artists.primary.0.name %}
+                        {{ track.artists.primary.0.name }}
+                        {% else %}
+                        Unknown Artist
+                    {% endif %}
+                    </p>
+                    <div style="display: flex; align-items: center;">
+                        <audio controls style="width: 90%; height: 50px;">
+                            <source src="{{ track.downloadUrl.4.url }}" type="audio/mpeg">
+                        </audio>
+
+                        <button onclick="showPlaylistModal(
+                            '{{ track.name }}',
+                            '{{ track.artists.primary.0.name|default:"Unknown Artist" }}',
+                            '{{ track.image.2.url }}',
+                            '{{ track.downloadUrl.4.url }}'
+                            )" style="margin-left: 10px; border: none; color: white; background: none; font-size: 30px; padding: 6px 10px; border-radius: 4px; cursor: pointer;">
+                            +
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% if recent_tracks %}
+        <h2>Recently Played</h2>
+        <div class="card-container">
+            {% for track in recent_tracks %}
+            <div class="card-p" style="width: 270px;">
+                <div class="card">
+                    <img src="{{ track.image }}" alt="{{ track.title }}">
+                </div>
+                <div class="card-out">
+                    <p>{{ track.title }}</p>
+                    <p>{{ track.artist }}</p>
+                    <div style="display: flex; align-items: center;">
+                        <audio controls style="width: 90%; height: 50px;">
+                            <source src="{{ track.downloadUrl.4.url }}" type="audio/mpeg">
+                        </audio>
+
+                        <button onclick="showPlaylistModal(
+                            '{{ track.name }}',
+                            '{{ track.artists.primary.0.name|default:"Unknown Artist" }}',
+                            '{{ track.image.2.url }}',
+                            '{{ track.downloadUrl.4.url }}'
+                            )" style="margin-left: 10px; border: none; color: white; background: none; font-size: 30px; padding: 6px 10px; border-radius: 4px; cursor: pointer;">
+                            +
+                        </button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}<h2>Punjabi Song</h2>
+        <div class="card-container">
+            {% for track in punjabi_tracks %}
+            <div class="card-p">
+                <div class="card">
+                    <img src="{{ track.image.2.url }}" alt="{{ track.title }}" />
+                </div>
+                <div class="card-out">
+                    <p>{{ track.name }}</p>
+                    <p>{% if track.artists.primary.0.name %}
+                        {{ track.artists.primary.0.name }}
+                        {% else %}
+                        Unknown Artist
+                    {% endif %}
+                    </p>
+                    <div style="display: flex; align-items: center;">
+                        <audio controls style="width: 90%; height: 50px;">
+                            <source src="{{ track.downloadUrl.4.url }}" type="audio/mpeg">
+                        </audio>
+
+                        <button onclick="showPlaylistModal(
+                            '{{ track.name }}',
+                            '{{ track.artists.primary.0.name|default:"Unknown Artist" }}',
+                            '{{ track.image.2.url }}',
+                            '{{ track.downloadUrl.4.url }}'
+                            )" style="margin-left: 10px; border: none; color: white; background: none; font-size: 30px; padding: 6px 10px; border-radius: 4px; cursor: pointer;">
+                            +
+                        </button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+
+        <h2>Trending Rajasthani T...</h2>
+        <div class="card-container">
+            {% for track in rajasthani_tracks %}
+            <div class="card-p">
+                <div class="card">
+                    <img src="{{ track.image.2.url }}" alt="{{ track.title }}" />
+                </div>
+                <div class="card-out">
+                    <p>{{ track.name }}</p>
+                    <p>{% if track.artists.primary.0.name %}
+                        {{ track.artists.primary.0.name }}
+                        {% else %}
+                        Unknown Artist
+                    {% endif %}
+                    </p>
+                    <div style="display: flex; align-items: center;">
+                        <audio controls style="width: 90%; height: 50px;">
+                            <source src="{{ track.downloadUrl.4.url }}" type="audio/mpeg">
+                        </audio>
+
+                        <button onclick="showPlaylistModal(
+                            '{{ track.name }}',
+                            '{{ track.artists.primary.0.name|default:"Unknown Artist" }}',
+                            '{{ track.image.2.url }}',
+                            '{{ track.downloadUrl.4.url }}'
+                            )" style="margin-left: 10px; border: none; color: white; background: none; font-size: 30px; padding: 6px 10px; border-radius: 4px; cursor: pointer;">
+                            +
+                        </button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+
+        <h2>Gujarati Song</h2>
+        <div class="card-container">
+            {% for track in gujarati_tracks %}
+            <div class="card-p">
+                <div class="card">
+                    <img src="{{ track.image.2.url }}" alt="{{ track.title }}" />
+                </div>
+                <div class="card-out">
+                    <p>{{ track.name }}</p>
+                    <p>{% if track.artists.primary.0.name %}
+                        {{ track.artists.primary.0.name }}
+                        {% else %}
+                        Unknown Artist
+                    {% endif %}
+                    </p>
+                    <div style="display: flex; align-items: center;">
+                        <audio controls style="width: 90%; height: 50px;">
+                            <source src="{{ track.downloadUrl.4.url }}" type="audio/mpeg">
+                        </audio>
+
+                        <button onclick="showPlaylistModal(
+                            '{{ track.name }}',
+                            '{{ track.artists.primary.0.name|default:"Unknown Artist" }}',
+                            '{{ track.image.2.url }}',
+                            '{{ track.downloadUrl.4.url }}'
+                            )" style="margin-left: 10px; border: none; color: white; background: none; font-size: 30px; padding: 6px 10px; border-radius: 4px; cursor: pointer;">
+                            +
+                        </button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        
+        
+        <h2>Haryanvi Song</h2>
+        <div class="card-container">
+            {% for track in haryanvi_tracks %}
+            <div class="card-p">
+                <div class="card">
+                    <img src="{{ track.image.2.url }}" alt="{{ track.title }}" />
+                </div>
+                <div class="card-out">
+                    <p>{{ track.name }}</p>
+                    <p>{% if track.artists.primary.0.name %}
+                        {{ track.artists.primary.0.name }}
+                        {% else %}
+                        Unknown Artist
+                    {% endif %}
+                    </p>
+                    <div style="display: flex; align-items: center;">
+                        <audio controls style="width: 90%; height: 50px;">
+                            <source src="{{ track.downloadUrl.4.url }}" type="audio/mpeg">
+                        </audio>
+
+                        <button onclick="showPlaylistModal(
+                            '{{ track.name }}',
+                            '{{ track.artists.primary.0.name|default:"Unknown Artist" }}',
+                            '{{ track.image.2.url }}',
+                            '{{ track.downloadUrl.4.url }}'
+                            )" style="margin-left: 10px; border: none; color: white; background: none; font-size: 30px; padding: 6px 10px; border-radius: 4px; cursor: pointer;">
+                            +
+                        </button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div id="playlistModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:1000;">
+        <div style="background:white; width:300px; margin:100px auto; padding:20px; border-radius:10px;">
+            <span onclick="closePlaylistModal()" style="float:right; cursor:pointer;">❌</span>
+            <h3 style="color: black;">Select Playlist</h3>
+            <ul id="playlistList" style="list-style:none; padding:0; color: black; cursor:pointer;"></ul>
+        </div>
+    </div>
+    <footer class="bottom-footer">
+        <a href="{% url 'home' %}">
+            <i class="fa fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="#">
+            <i class="fa fa-music"></i>
+            <span>Hellotunes</span>
+        </a>
+        <a href="{% url 'my_playlists' %}">
+            <i class="fa fa-list"></i>
+            <span>Playlist</span>
+        </a>
+        <a href="#">
+          <i class="fa fa-cog"></i>
+          <span>Settings</span>
+        </a>
+    </footer>
+</div>
+<script>
+    document.addEventListener('play', function(e){
+    const audios = document.getElementsByTagName('audio');
+    for(let i = 0; i < audios.length; i++) {
+      if(audios[i] !== e.target){
+        audios[i].pause();
+      }
+    }
+  }, true);
+
+  document.querySelectorAll("audio").forEach(player => {
+    player.addEventListener("play", function () {
+        const trackCard = this.closest(".card-out");
+        const title = trackCard.querySelector("p:nth-child(1)")?.innerText;
+        const artist = trackCard.querySelector("p:nth-child(2)")?.innerText;
+        const audioSrc = this.querySelector("source")?.src;
+        const image = trackCard.previousElementSibling.querySelector("img")?.src;
+
+        fetch("{% url 'track_played' %}", {
+            method: "POST",
+            headers: {
+                "X-CSRFToken": "{{ csrf_token }}",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                title: title,
+                artist: artist,
+                audio: audioSrc,
+                image: image
+            })
+        });
+    });
+ });
+ let currentTrack = {};
+
+function showPlaylistModal(title, artist, image, audio) {
+    currentTrack = { title, artist, image, audio };
+
+    fetch("/mymusic/api/user-playlists/")
+        .then(res => res.json())
+        .then(data => {
+            const list = document.getElementById("playlistList");
+            list.innerHTML = "";
+
+            if (data.playlists.length === 0) {
+                list.innerHTML = "<li>No playlists found</li>";
+                return;
+            }
+
+            data.playlists.forEach(p => {
+                const li = document.createElement("li");
+                li.textContent = p.name;
+                li.onclick = () => addToPlaylist(p.id);
+                list.appendChild(li);
+            });
+
+            document.getElementById("playlistModal").style.display = "block";
+        });
+}
+
+function closePlaylistModal() {
+    document.getElementById("playlistModal").style.display = "none";
+}
+
+function getCSRFToken() {
+    return document.cookie
+        .split("; ")
+        .find(row => row.startsWith("csrftoken"))
+        ?.split("=")[1];
+}
+
+function addToPlaylist(playlistId) {
+    fetch("/mymusic/add-to-playlist/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRFToken": getCSRFToken(),
+        },
+        body: JSON.stringify({
+            playlist_id: playlistId,
+            title: currentTrack.title,
+            artist: currentTrack.artist,
+            image: currentTrack.image,
+            audio: currentTrack.audio,
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.success) {
+            console.log("Song added to playlist!");
+        } else {
+            console.log("Failed: " + (data.error || "Unknown error"));
+            console.error("Backend error:", data);
+        }
+        closePlaylistModal();
+    })
+    .catch(err => {
+        console.error("Network error:", err);
+        console.log("Request failed");
+    });
+}
+</script>
+{% endblock %}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <title>My Profile</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    .profile-pic {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background-color: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 20px auto;
+      position: relative;
+    }
+    .edit-icon {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background: #000;
+      border-radius: 50%;
+      padding: 5px;
+ }
+  </style>
+</head>
+<body class="bg-black text-white">
+
+  <div class="container pt-4">
+    <div class="d-flex justify-content-between align-items-center">
+      <a href="javascript:history.back()" class="text-white">
+        <i class="bi bi-arrow-left"></i>
+      </a>
+      <h4 class="mb-0">My Profile</h4>
+      <button class="btn btn-danger btn-sm">Save</button>
+    </div>
+
+    <!-- Profile Image -->
+    <div class="profile-pic">
+      {% if profile_image %}
+        <img src="{{ profile_image.url }}" alt="Profile" class="img-fluid rounded-circle" width="120">
+      {% else %}
+        <i class="bi bi-person fs-1 text-secondary"></i>
+      {% endif %}
+      <div class="edit-icon">
+        <i class="bi bi-pencil text-white"></i>
+      </div>
+    </div>
+<!-- Phone -->
+    <div class="mb-3">
+      <label class="form-label">Phone Number</label>
+      <input type="text" class="form-control bg-dark text-white" value="{{ phone }}" readonly>
+    </div>
+
+    <!-- Full Name -->
+    <div class="mb-3">
+      <label class="form-label">Full Name</label>
+      <input type="text" class="form-control bg-dark text-white" value="{{ request.user.username }}" placeholder="Enter your name">
+    </div>
+
+    <!-- Email -->
+    <div class="mb-3">
+      <label class="form-label">Email Address</label>
+      <input type="email" class="form-control bg-dark text-white" value="{{ request.user.email }}" placeholder="Enter your Email address here">
+    </div>
+
+    <!-- Footer Note -->
+    <p class="text-center mt-4 text-muted">
+      By sharing this information, you agree to the <a href="#" class="text-info">Privacy Policy</a>.
+    </p>
+  </div>
+</body>
+</html>
