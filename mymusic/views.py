@@ -11,6 +11,11 @@ from django.http import JsonResponse
 import json
 # Create your views here.
 
+
+
+def root_redirect(request):
+    return redirect('/accounts/login/')
+
 def fetch_songs(query):
     url = f'https://saavn.dev/api/search/songs?query={query}'
     try:
