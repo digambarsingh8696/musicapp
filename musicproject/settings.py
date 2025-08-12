@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-y%&%d*@z2wi@(x#ckdt92@j#h$5h%0ypdjj(qg^=-m9bjd@znm'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False 
 
-ALLOWED_HOSTS = ['music-app-gx5s.onrender.com']
+ALLOWED_HOSTS = ['digambar22.pythonanywhete.com']
 
 
 # Application definition
